@@ -21,7 +21,6 @@ const el = demo(async () => {
   style.textContent = `
     html, body {
       height: 100%;
-      background-color: hsla(245, 55%, 50%, 1);
       font-size: 1.3em;
       margin: 0;
       padding: 0;
