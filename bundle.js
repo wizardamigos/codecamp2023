@@ -22,7 +22,6 @@ const el = demo(async () => {
   style.textContent = `
     html, body {
       height: 100%;
-      background-color: hsla(245, 55%, 50%, 1);
       font-size: 1.3em;
       margin: 0;
       padding: 0;
@@ -46,13 +45,13 @@ function page (cb) {
   booking_button.innerText = 'Tickets / Booking'
   booking_button.onclick = () => book()
   
-  const map_button = document.createElement('button')
-  map_button.innerText = 'Map'
-  map_button.onclick = () => open_map()
+  const register = document.createElement('button')
+  register.innerText = 'Register'
+  register.onclick = () => book()
   
   const speakers = document.createElement('div')
   speakers.classList.add('box')
-  speakers.innerHTML = `<h2> Speakers </h2> </div>`
+  speakers.innerHTML = `<h2> Wizards </h2> </div>`
   const container = document.createElement('div')
   container.classList.add('speakers')
   speakers.append(container)
@@ -92,25 +91,28 @@ function page (cb) {
     <link rel="preload" href'./assets/astral3.jpg' as="image">
     
     <div class='main'>
-      <img class='logo' src='./assets/Wizard-Amigos---Stickers---FOUR-FACES---TRANSPARENT---2022.png'></img>
+      <img class='logo' src='./assets/Wizard-Amigos---Stickers---CAT-NOMAD---TRANSPARENT---2022.png'></img>
       <h1>
         <span>Wizard Amigos</span>
         <span> Code Camp</span>
       </h1>
-      <div class='date'>Sept 26 - Oct 10 2022, Wales (UK)</div>
+      <div class='date'>October 2023, Portugal</div>
       <div class='box'>
-      <p>Wizard Amigos code camp was a 2 week DIY event from September 26 to October 10.</p>
-        <p> 
-          First week was reserved for freestyle coworking, outdoor activities and just easy going hanging out with the like-minded people and the second week for informal talks and workshops.
+      <p>Wizard Amigos code camp is a DIY gathering that will this year stretch over the whole October.</p>
+        <p>
+          A full month of co-living, co-working and organizing an unconference (with remote guests) sharing knowledge about 
+          P2P / federated / co-governed tech, care for people & the future, sustainability and exploring pathways toward real systemic change.
         </p>
-        <p>Half a month of living, breathing and learning P2P and the future of the internet.</p>
+        <p>Are you thining of joining? Let us know, so we can plan better :)</p>
+        <register></register>
       </div>
 
       <div class='box'>
-        <h2> Talks </h2>
-        <p> All 33 talks and workshops are now available <a target='_blank' href='https://www.youtube.com/playlist?list=PLubqJ-IuY27C6crYh0UzjGL3_GrmaabL_'> on this link.</a></p>
-        <p> You can also check out  <a target='_blank' href='https://photos.google.com/share/AF1QipNmD4-fYqt3gpszGQj7Xf_ny3PBCkxDEnPWu4bOs9p9MhDsmYmcznX-87Rn8VfDbQ?key=MjhCRVFfS3J2alVFdzVHZHZrd3NaNzBMY1F4UGJB'> photos and videos from the event.</a></p>
-        <p>To support Wizard Amigos, please donate through our <a target='_blank' href='https://opencollective.com/wizardamigos'> Open Collective page. </a></p>
+        <h2> Talks, Workshops & Discussions </h2>
+        <p></p>
+        <p> Talks from the code camp will be recorded (some will be live-streamed) and available on our <a target='_blank' href='https://peertube.1312.media/a/wizardamigos/video-channels'> PeerTube</a> and <a target='_blank' href='https://www.youtube.com/@wizardamigos4213'> Youtube</a> channels. </p>
+        <p>To support Wizard Amigos, You can drop a coin in the tip jar through our <a target='_blank' href='https://opencollective.com/wizardamigos'> Open Collective page. </a></p>
+      
         </div>
       
       <speakers></speakers>
@@ -118,22 +120,14 @@ function page (cb) {
      
       
       <div class='venue box'>
-        <h2>Venue</h2>
+        <h2>Location</h2>
         <p>
-          Accommodation was provided by the Astralship, a hackerspace that promotes 
-          creativity, collaboration and innovation located in 
-          Deiniolen, Wales. You can get there by taking a 
-          <a target='_blank' href='https://www.thetrainline.com/book/results?origin=2144c4ddc11461cf9b03af198933e8df&destination=da5bb7333af0b34c0c39e59b5a53b139&outwardDate=2022-09-26T09%3A45%3A00&outwardDateType=departAfter&journeySearchType=single&passengers%5B%5D=1992-08-07&directSearch=false&selectedOutward=SAhkJK5SWK8%3D%3AyRnNMstN3X8%3D'>direct train</a> 
-          to Bangor (approx. 3h from London) 
-          and then a taxi to Deniolen (approx. £20).
+          We are still looking for the right place somewhere in the nature near Lisbon (if you know any nice place that would host 10-20 people, pelase let us know).
+
+          Last year's code camp happened in the Astralship, a hackerspace that promotes 
+          creativity, collaboration and innovation located in Deiniolen, Wales. Below are some photos from the previous gathering.
         </p>      
-        <map_button></map_button>
-        <p class='astralship'>
-          The Astralship is based in a 200 year old chapel, where the mountains of Snowdonia 
-          meet the sea. The chapel dates from 1838 and is located in an unbelievably beautiful area, 
-          with endless mountains, beaches and quarries to explore. 
-          It's the perfect place to be if you like hiking, climbing and wild swimming.
-        </p> 
+
         <div class='gallery'>
           <img src='./assets/astral3.jpg'></img>
           <img src='./assets/astral9.jpg'></img>
@@ -156,9 +150,7 @@ function page (cb) {
         <h3>Who is organizing this?</h3>
         <p>
           This event is being organised by enthusiasts, for enthusiasts. 
-          Namely <a href='https://twitter.com/ninabreznik' target="_blank">ninabreznik</a> 
-          and <a href='https://twitter.com/serapath' target="_blank">serapath</a> who are active within the P2P community.
-          Anybody who would like to help organize next events should shoot us a message in <a href='https://discord.gg/8FzZPHkp44' target="_blank">WizardAmigos Discord</a>. 
+          We are a group doing this together, and we want to learn how to do things together. If you want to <a href='https://discord.gg/8FzZPHkp44' target="_blank">tag along</a>, you are in the group. We are we.
         </p>
         <h3>Is event sponsored?</h3>
         <p>
@@ -171,7 +163,7 @@ function page (cb) {
 
   shadow.querySelector('img').onload = cb
   shadow.querySelector('speakers').replaceWith(speakers)
-  shadow.querySelector('map_button').replaceWith(map_button)
+  shadow.querySelector('register').replaceWith(register)
   
   // shadow.adoptedStyleSheets = [sheet]
   const style = document.createElement('style')
@@ -182,7 +174,7 @@ function page (cb) {
   // handlers
 
   function book () {
-    window.open('https://forms.zohopublic.com/virtualoffice22084/form/WizardAmigosCodeCamp/formperma/W61690fN8Q0cci-bY3M-87kMmQ2kvKBjybp4ZNaX60Y')
+    window.open('https://forms.zohopublic.com/virtualoffice22084/form/WizardAmigosCodeCamp1/formperma/D8aoqyrH9shhhLqNxLFWLczATUOBKHfmvTLJVvIOUs8')
   }
 
   function open_map () {
@@ -199,6 +191,7 @@ function get_theme () {
       --fluo-green: hsla(121, 97%, 65%, 1);
       --green: hsla(163, 76%, 58%, 1);
       --red: hsla(316, 56%, 32%, 1);
+      --light-yellow: hsla(44, 87%, 78%, 1);
     }
     .main {
       display: grid;
@@ -208,8 +201,9 @@ function get_theme () {
       justify-items: center;
     }
     .logo {
-      min-width: 350px;
-      max-width: 450px;
+      margin-top: 55px;
+      min-width: 550px;
+      max-width: 550px;
       width: 20%;
       height: auto;
       grid-column-start: 2;
@@ -473,39 +467,42 @@ module.exports = get_speakers
 
 function get_speakers () {
   const list = [
-    { name: 'mafintosh', project: 'Hypercore & Holepunch', from: 'remote', link: 'https://twitter.com/mafintosh' },
-    { name: 'jam10o', project: 'Shokunin network', from: 'local', link: 'https://twitter.com/jam10o'},
-    { name: 'dboutcert', project: 'WizardAmigos', from: 'remote', link: 'https://twitter.com/dboutcert'},
-    { name: 'noraliucode', project: 'x-To-Earn', from: 'local', link: 'https://twitter.com/noraliucode' },
-    { name: 'MBrinsleyHarris', project: 'Hacktion Lab', from: 'local' , link: 'https://twitter.com/MBrinsleyHarris'},
-    { name: 'kumavis_', project: 'LavaMoat & MetaMask', from: 'remote', link: 'https://twitter.com/kumavis_'},
-    { name: 'heapwolf', project: 'Socket Supply', from: 'remote', link: 'https://twitter.com/heapwolf'},
-    { name: 'carax', project: 'Sher & Geut', from: 'remote', link: 'https://twitter.com/carax'},
-    { name: 'ninabreznik', project: 'DatDot & WizardAmigos', from: 'local', link: 'https://twitter.com/ninabreznik'},
-    { name: 'zobroj', project: 'Art & Design', from: 'local', link: 'https://twitter.com/zobroj'},
-    { name: 'RangerMauve', project: 'Agregore', from: 'remote', link: 'https://twitter.com/RangerMauve'},
-    { name: 'Aglae Bindi', project: 'Astralship & TyddynTeg', from: 'local', link: 'https://twitter.com/AstralMarlene'},
+    // { name: 'mafintosh', project: 'Hypercore & Holepunch', from: 'remote', link: 'https://twitter.com/mafintosh' },
+    { name: 'jam10o', project: 'Shokunin', from: 'local', link: 'https://twitter.com/jam10o'},
+    // { name: 'dboutcert', project: 'WizardAmigos', from: 'remote', link: 'https://twitter.com/dboutcert'},
+    { name: 'noraliucode', project: 'Patronage', from: 'local', link: 'https://twitter.com/noraliucode' },
+    { name: 'adelayde', project: 'Hacktion Lab', from: 'local' , link: 'https://twitter.com/MBrinsleyHarris'},
+    { name: 'fredrik', project: 'Hacker', from: 'local' , link: ''},
+    // { name: 'kumavis_', project: 'LavaMoat & MetaMask', from: 'remote', link: 'https://twitter.com/kumavis_'},
+    // { name: 'heapwolf', project: 'Socket Supply', from: 'remote', link: 'https://twitter.com/heapwolf'},
+    // { name: 'carax', project: 'Sher & Geut', from: 'remote', link: 'https://twitter.com/carax'},
+    { name: 'ninjabirdy', project: 'DatDot & WizardAmigos', from: 'local', link: 'https://twitter.com/ninabreznik'},
+    // { name: 'zobroj', project: 'Art & Design', from: 'local', link: 'https://twitter.com/zobroj'},
+    // { name: 'RangerMauve', project: 'Agregore', from: 'remote', link: 'https://twitter.com/RangerMauve'},
+    // { name: 'Aglae Bindi', project: 'Astralship & TyddynTeg', from: 'local', link: 'https://twitter.com/AstralMarlene'},
     { name: 'serapath', project: 'DatDot & WizardAmigos', from: 'local', link: 'https://twitter.com/serapath'},
-    { name: 'liamkurmos', project: 'Astralship', from: 'local', link: 'https://twitter.com/liamkurmos'},
-    { name: 'naugtur', project: 'Endo & MetaMask', from: 'remote', link: 'https://twitter.com/naugtur'},
-    { name: 'telamohn', project: 'Pico Stack', from: 'remote', link: 'https://twitter.com/telamohn'},
-    { name: 'hugozap', project: 'Rust in JS', from: 'remote', link: 'https://twitter.com/hugozap'},
-    { name: 'xylodrone', project: 'Ordum', from: 'local', link: 'https://twitter.com/xylodrone'},
-    { name: 'jeffemmett', project: 'Commons stack', from: 'remote', link: 'https://twitter.com/jeffemmett'},
-    { name: 'MikolaLysenko', project: '0fps & Socket Security', from: 'remote', link: 'https://twitter.com/MikolaLysenko'},
-    { name: 'nicksellen', project: 'Karrot', from: 'local', link: 'https://nicksellen.co.uk/'},
-    { name: 'micahscopes', project: 'Wondering Xyz', from: 'remote', link: 'https://twitter.com/micahscopes'},
-    { name: 'julianne becker', project: 'Coconat', from: 'remote', link: 'https://www.facebook.com/juliannebecker'},
-    { name: 'whimful', project: 'Ahau', from: 'remote', link: 'https://twitter.com/whimful'},
-    { name: 'shaneo_donnell', project: 'Value Flows', from: 'remote', link: 'https://twitter.com/shaneo_donnell'},
-    { name: 'Hdegroote', project: 'HyperPubees', from: 'remote', link: 'https://gitlab.com/HDegroote'},
-    { name: 'Stephen Reid', project: 'Worker Cooperatives and DAOs', from: 'remote', link: 'https://twitter.com/lunarpunk_0x'},
-    { name: 'Daniel Bar', project: 'Pink Valley Farm', from: 'remote', link: 'https://twitter.com/danieltbar'},
-    { name: 'Aral Balkan', project: 'Small World Tech & Kitten', from: 'remote' },
-    { name: 'Toshi', project: ' Freelance', from: 'remote' },
-    { name: 'Mirsal', project: 'Peertube', from: 'local' },
-    { name: 'Naomi', project: 'Freelance', from: 'remote' },    
-    { name: 'Leslie', project: 'Zen', from: 'remote' },    
+    // { name: 'liamkurmos', project: 'Astralship', from: 'local', link: 'https://twitter.com/liamkurmos'},
+    // { name: 'naugtur', project: 'Endo & MetaMask', from: 'remote', link: 'https://twitter.com/naugtur'},
+    { name: 'telamohn', project: 'Pico Stack', from: 'local', link: 'https://twitter.com/telamohn'},
+    { name: 'mariha', project: 'Sleepy bikes', from: 'local', link: 'https://liberapay.com/mariha'},
+    // { name: 'hugozap', project: 'Rust in JS', from: 'remote', link: 'https://twitter.com/hugozap'},
+    // { name: 'xylodrone', project: 'Ordum', from: 'local', link: 'https://twitter.com/xylodrone'},
+    // { name: 'jeffemmett', project: 'Commons stack', from: 'remote', link: 'https://twitter.com/jeffemmett'},
+    // { name: 'MikolaLysenko', project: '0fps & Socket Security', from: 'remote', link: 'https://twitter.com/MikolaLysenko'},
+    // { name: 'nicksellen', project: 'Karrot', from: 'local', link: 'https://nicksellen.co.uk/'},
+    // { name: 'micahscopes', project: 'Wondering Xyz', from: 'remote', link: 'https://twitter.com/micahscopes'},
+    // { name: 'julianne becker', project: 'Coconat', from: 'remote', link: 'https://www.facebook.com/juliannebecker'},
+    // { name: 'whimful', project: 'Ahau', from: 'remote', link: 'https://twitter.com/whimful'},
+    // { name: 'shaneo_donnell', project: 'Value Flows', from: 'remote', link: 'https://twitter.com/shaneo_donnell'},
+    { name: 'hdegroote', project: 'HyperPubee', from: 'local', link: 'https://gitlab.com/HDegroote'},
+    { name: 'rtn', project: 'Linkping', from: 'local', link: ' https://github.com/ralphtheninja'},
+    // { name: 'Stephen Reid', project: 'Worker Cooperatives and DAOs', from: 'remote', link: 'https://twitter.com/lunarpunk_0x'},
+    // { name: 'Daniel Bar', project: 'Pink Valley Farm', from: 'remote', link: 'https://twitter.com/danieltbar'},
+    // { name: 'Aral Balkan', project: 'Small World Tech & Kitten', from: 'remote' },
+    // { name: 'Toshi', project: ' Freelance', from: 'remote' },
+    // { name: 'Mirsal', project: 'Peertube', from: 'local' },
+    // { name: 'Naomi', project: 'Freelance', from: 'remote' },    
+    // { name: 'Leslie', project: 'Zen', from: 'remote' },    
   ]
   return list
 } 
