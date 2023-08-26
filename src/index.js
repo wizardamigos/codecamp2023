@@ -68,6 +68,7 @@ function page (cb) {
           A full month of co-living, co-working and organizing an unconference (with remote guests) sharing knowledge about 
           P2P / federated / co-governed tech, care for people & the future, sustainability and exploring pathways toward real systemic change.
         </p>
+        <p>Are you thining of joining? Let us know, so we can plan better :)</p>
         <register></register>
       </div>
 
