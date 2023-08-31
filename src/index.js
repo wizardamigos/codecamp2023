@@ -68,7 +68,7 @@ function page (cb) {
           A full month of co-living, co-working and organizing an unconference (with remote guests) sharing knowledge about 
           P2P / federated / co-governed tech, care for people & the future, sustainability and exploring pathways toward real systemic change.
         </p>
-        <p>Are you thining of joining? Let us know, so we can plan better :)</p>
+        <p>Are you thinking of joining? Let us know, so we can plan better :)</p>
         <register></register>
       </div>
 
@@ -87,7 +87,7 @@ function page (cb) {
       <div class='venue box'>
         <h2>Location</h2>
         <p>
-          We are still looking for the right place somewhere in the nature near Lisbon (if you know any nice place that would host 10-20 people, pelase let us know).
+          We are still looking for the right place somewhere in the nature near Lisbon (if you know of any nice place that would host 10-20 people, please let us know).
 
           Last year's code camp happened in the Astralship, a hackerspace that promotes 
           creativity, collaboration and innovation located in Deiniolen, Wales. Below are some photos from the previous gathering.
