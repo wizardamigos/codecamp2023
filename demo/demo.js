@@ -24,6 +24,7 @@ const el = demo(async () => {
       font-size: 1.3em;
       margin: 0;
       padding: 0;
+      background-color: black;
     }
   `
   document.body.append(style, el)
