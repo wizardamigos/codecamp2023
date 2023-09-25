@@ -41,19 +41,19 @@ function page (cb) {
   })
   
   shadow.innerHTML = `
-    <link rel="preload" href'./assets/astral3.jpg' as="image">
-    <link rel="preload" href'./assets/astral9.jpg' as="image">
-    <link rel="preload" href'./assets/astral1.jpg' as="image">
-    <link rel="preload" href'./assets/astral8.jpg' as="image">
-    <link rel="preload" href'./assets/astral10.jpg' as="image">
-    <link rel="preload" href'./assets/astral7.jpg' as="image">
-    <link rel="preload" href'./assets/astral5.jpg' as="image">
-    <link rel="preload" href'./assets/astral2.jpg' as="image">
-    <link rel="preload" href'./assets/astral4.jpg' as="image">
-    <link rel="preload" href'./assets/astral6.jpg' as="image">
-    <link rel="preload" href'./assets/astral11.jpg' as="image">
-    <link rel="preload" href'./assets/astral12.jpg' as="image">
-    <link rel="preload" href'./assets/astral3.jpg' as="image">
+    <link rel="preload" href'./assets/alvados3.png' as="image">
+    <link rel="preload" href'./assets/alvados9.png' as="image">
+    <link rel="preload" href'./assets/alvados1.png' as="image">
+    <link rel="preload" href'./assets/alvados8.png' as="image">
+    <link rel="preload" href'./assets/alvados10.png' as="image">
+    <link rel="preload" href'./assets/alvados7.png' as="image">
+    <link rel="preload" href'./assets/alvados5.png' as="image">
+    <link rel="preload" href'./assets/alvados2.png' as="image">
+    <link rel="preload" href'./assets/alvados4.png' as="image">
+    <link rel="preload" href'./assets/alvados6.png' as="image">
+    <link rel="preload" href'./assets/alvados11.png' as="image">
+    <link rel="preload" href'./assets/alvados12.png' as="image">
+    <link rel="preload" href'./assets/alvados3.png' as="image">
     
     <div class='main'>
       <img class='logo' src='./assets/Wizard-Amigos---Stickers---CAT-NOMAD---TRANSPARENT---2022.png'></img>
@@ -66,9 +66,9 @@ function page (cb) {
       <p>Wizard Amigos code camp is a DIY gathering that will this year stretch over the whole October.</p>
         <p>
           A full month of co-living, co-working and organizing an unconference (with remote guests) sharing knowledge about 
-          P2P / federated / co-governed tech, care for people & the future, sustainability and exploring pathways toward real systemic change.
+          P2P / federated / co-governed tech, care for people & the future, sustainability and exploring pathways toward a real systemic change.
         </p>
-        <p>Are you thinking of joining? Let us know, so we can plan better :)</p>
+        <p>Are you thinking of joining? The camp starts very soon and there is still a few spots available :)</p>
         <register></register>
       </div>
 
@@ -87,26 +87,26 @@ function page (cb) {
       <div class='venue box'>
         <h2>Location</h2>
         <p>
-          We are still looking for the right place somewhere in the nature near Lisbon (if you know of any nice place that would host 10-20 people, please let us know).
+        Wizard Amigos code camp 2023 is set in a villa on a valley with a breathtaking view of the mountains around it. It is located in a quiet village in Portugal called Alvados, where you can experience the old days' rural life.
+        Surrounded by nature 360º you will feel like you've been immersed into relaxing mode. 
 
-          Last year's code camp happened in the Astralship, a hackerspace that promotes 
-          creativity, collaboration and innovation located in Deiniolen, Wales. Below are some photos from the previous gathering.
+        We plan to work, learn from each other and relax inside the house or outside beneath the shade of an olive tree, by the pool or on the terrace facing the mountains, or even hiking/biking around the kms and kms of indigenous nature trails that surround the wizard villa.
         </p>      
 
         <div class='gallery'>
-          <img src='./assets/astral3.jpg'></img>
-          <img src='./assets/astral9.jpg'></img>
-          <img src='./assets/astral1.jpg'></img>
-          <img src='./assets/astral8.jpg'></img>
-          <img src='./assets/astral10.jpg'></img>
-          <img src='./assets/astral7.jpg'></img>
-          <img src='./assets/astral5.jpg'></img>
-          <img src='./assets/astral4.jpg'></img>
-          <img src='./assets/astral6.jpg'></img>
-          <img src='./assets/astral11.jpg'></img>
-          <img src='./assets/astral13.jpg'></img>
-          <img src='./assets/astral2.jpg'></img>
-          <img src='./assets/astral12.jpg'></img>
+          <img src='./assets/alvados1.png'></img>
+          <img src='./assets/alvados11.png'></img>
+          <img src='./assets/alvados4.png'></img>
+          <img src='./assets/alvados2.png'></img>
+          <img src='./assets/alvados13.png'></img>
+          <img src='./assets/alvados8.png'></img>
+          <img src='./assets/alvados6.png'></img>
+          <img src='./assets/alvados9.png'></img>
+          <img src='./assets/alvados7.png'></img>
+          <img src='./assets/alvados5.png'></img>
+          <img src='./assets/alvados10.png'></img>
+          <img src='./assets/alvados3.png'></img>
+          <img src='./assets/alvados12.png'></img>
         </div>     
       </div>
       
