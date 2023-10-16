@@ -14,12 +14,26 @@ function page (cb) {
   register.innerText = 'Register'
   register.onclick = () => book()
   
-  const speakers = document.createElement('div')
-  speakers.classList.add('box')
-  speakers.innerHTML = `<h2> Wizards </h2> </div>`
+  
+  
+  const wizards = document.createElement('div')
+  wizards.classList.add('box')
+  wizards.innerHTML = `<h2> Wizards </h2> </div>`
   const container = document.createElement('div')
-  container.classList.add('speakers')
-  speakers.append(container)
+  container.classList.add('wizards')
+  wizards.append(container)
+
+
+  // Speakers
+  let speakers_wrapper = document.createElement('div')
+  speakers_wrapper.classList.add('box')
+  speakers_wrapper.innerHTML = `
+    <h2>Speakers</h2>
+    <div class="speaker_grid"></div>
+  `
+
+
+
   list.forEach(item => {
     const img = document.createElement('img')
     img.setAttribute('src', `./assets/speakers/${item.name}`)
@@ -30,15 +44,30 @@ function page (cb) {
     const project = document.createElement('div')
     project.innerText = item.project
     project.classList.add('project')
+    const wizard = document.createElement('a')
+    if (item.link) wizard.setAttribute('href', item.link)
+    wizard.setAttribute('target', '_blank')
+    wizard.classList.add('wizard')
+    wizard.append(img, name, project)
+    container.append(wizard)
 
-    const speaker = document.createElement('a')
-    if (item.link) speaker.setAttribute('href', item.link)
-    speaker.setAttribute('target', '_blank')
-    speaker.classList.add('speaker')
-    speaker.append(img, name, project)
+    let speaker_grid = speakers_wrapper.querySelector('.speaker_grid')
+    let speaker_card_container = document.createElement('div')
+    speaker_card_container.classList.add('speaker_card_container')
+    speaker_card_container.innerHTML = `
+      <div class="speaker_card_container">
+        <div class="speaker_card">
+          <img src="./assets/speakers/${item.name}" class="profile_img ${(item.from === 'remote') ? 'remote' : 'local' }" ></img>
+            <div class="username">
+              <a href="${item.link}" target="_blank">${item.name}</a> - <a>${item.project}</a>
+            </div>
+          <div class="talk">Subject of talk</div>
+        </div>
+      </div>`
+    speaker_grid.append(speaker_card_container)
 
-    container.append(speaker)
   })
+
   
   shadow.innerHTML = `
     <link rel="preload" href'./assets/alvados3.png' as="image">
@@ -61,6 +90,7 @@ function page (cb) {
         <span>Wizard Amigos</span>
         <span> Code Camp</span>
       </h1>
+
       <div class='date'>October 2023, Portugal</div>
       <div class='box'>
       <p>Wizard Amigos code camp is a DIY gathering that will this year stretch over the whole October.</p>
@@ -80,10 +110,9 @@ function page (cb) {
       
         </div>
       
+      <wizards></wizards>
       <speakers></speakers>
 
-     
-      
       <div class='venue box'>
         <h2>Location</h2>
         <p>
@@ -127,7 +156,8 @@ function page (cb) {
   `
 
   shadow.querySelector('img').onload = cb
-  shadow.querySelector('speakers').replaceWith(speakers)
+  shadow.querySelector('wizards').replaceWith(wizards)
+  shadow.querySelector('speakers').replaceWith(speakers_wrapper)
   shadow.querySelector('register').replaceWith(register)
   
   // shadow.adoptedStyleSheets = [sheet]
@@ -244,7 +274,7 @@ function get_theme () {
     }
     .box {
       grid-column-start: 2;
-      border: 16px solid var(--light-purple);
+      border: 6px solid var(--light-purple);
       transition: box-shadow .3s ease-in-out;
       padding: 3%;
       margin: 5% 5% 0 5%;
@@ -252,30 +282,30 @@ function get_theme () {
       font-size: 1.5rem;
       width: 90%;
     }
-    .speakers {     
+    .wizards {     
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       justify-items: center;
     }
-    .speaker {
+    .wizard {
       padding: 10px;
       text-decoration: none;
     }
-    .speaker:hover {
+    .wizard:hover {
       text-decoration: none;
     }
-    .speaker .name {
+    .wizard .name {
       text-align: center;
       font-weight: 700;
       font-size: 1.2rem;
       color: var(--fluo-green);
     }
-    .speaker .project {
+    .wizard .project {
       text-align: center;
       font-size: 1rem;
       color: var(--green);
     }
-    .speaker img {
+    .wizard img {
       border-radius: 50%;
       margin-top: 20%;
       min-width: 150px;
@@ -284,7 +314,7 @@ function get_theme () {
       height: auto;  
       transition: all 0.5s ease-in-out 0s;
     }
-    .speaker img:hover {
+    .wizard img:hover {
       cursor: pointer;
       transform: translate(5%, 10%);
       box-shadow: var(--purple);
@@ -305,6 +335,73 @@ function get_theme () {
       -webkit-box-shadow: 7px 7px var(--fluo-green);
       -o-box-shadow: 7px 7px var(--fluo-green);    
     }
+
+    /* SPEAKER */
+    .speaker_grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+
+      .speaker_card_container{
+        background-color:var(--light-purple);
+        aspect-ratio:16/9;
+        position:relative;
+
+
+        .speaker_card{
+          height:100%;
+          width:100%;
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+          align-items:center;
+          position:absolute;
+          background-color:black;
+          border:2px solid var(--light-purple);
+          transition:0.2s;
+          text-align:center;
+        }
+
+        .profile_img{
+          width:80px;
+          aspect-ratio:1/1;
+          border-radius:10rem;
+          background-color:red;
+          margin-bottom:20px;
+        }
+
+        .username{
+          color: var(--fluo-green);
+          font-size:1.2rem;
+          font-weight:700;
+          a{
+            text-decoration:none;
+            color:var(--flou-green);
+            &:hover{
+              text-decoration:underline;
+            }
+          }
+        }
+        
+        .talk{
+          color:var(--green);
+          font-size:1rem;
+        }
+
+        &:hover{
+          .speaker_card{
+            transform: translate(-12px, -12px)
+          }
+        }
+
+      }
+
+    }
+
+
+
+
+
     .booking {
     }
     .venue {
