@@ -13,16 +13,6 @@ function page (cb) {
   const register = document.createElement('button')
   register.innerText = 'Register'
   register.onclick = () => book()
-  
-  
-  
-  const wizards = document.createElement('div')
-  wizards.classList.add('box')
-  wizards.innerHTML = `<h2> Wizards </h2> </div>`
-  const container = document.createElement('div')
-  container.classList.add('wizards')
-  wizards.append(container)
-
 
   // Speakers
   let speakers_wrapper = document.createElement('div')
@@ -35,22 +25,6 @@ function page (cb) {
 
 
   list.forEach(item => {
-    const img = document.createElement('img')
-    img.setAttribute('src', `./assets/speakers/${item.name}`)
-    img.classList.add((item.from === 'remote') ? 'remote' : 'local' )
-    const name = document.createElement('div')
-    name.innerText = item.name
-    name.classList.add('name')
-    const project = document.createElement('div')
-    project.innerText = item.project
-    project.classList.add('project')
-    const wizard = document.createElement('a')
-    if (item.link) wizard.setAttribute('href', item.link)
-    wizard.setAttribute('target', '_blank')
-    wizard.classList.add('wizard')
-    wizard.append(img, name, project)
-    container.append(wizard)
-
     let speaker_grid = speakers_wrapper.querySelector('.speaker_grid')
     let speaker_card_container = document.createElement('div')
     speaker_card_container.classList.add('speaker_card_container')
@@ -61,7 +35,7 @@ function page (cb) {
             <div class="username">
               <a href="${item.link}" target="_blank">${item.name}</a> - <a>${item.project}</a>
             </div>
-          <div class="talk">Subject of talk</div>
+          <div class="talk">Subject of talk. lorem ipsum ase de lorem ipsum ase de lorem ipsum </div>
         </div>
       </div>`
     speaker_grid.append(speaker_card_container)
@@ -110,7 +84,6 @@ function page (cb) {
       
         </div>
       
-      <wizards></wizards>
       <speakers></speakers>
 
       <div class='venue box'>
@@ -156,7 +129,6 @@ function page (cb) {
   `
 
   shadow.querySelector('img').onload = cb
-  shadow.querySelector('wizards').replaceWith(wizards)
   shadow.querySelector('speakers').replaceWith(speakers_wrapper)
   shadow.querySelector('register').replaceWith(register)
   
@@ -273,6 +245,7 @@ function get_theme () {
       grid-column-start: 2;
     }
     .box {
+      container-type: inline-size;
       grid-column-start: 2;
       border: 6px solid var(--light-purple);
       transition: box-shadow .3s ease-in-out;
@@ -282,64 +255,11 @@ function get_theme () {
       font-size: 1.5rem;
       width: 90%;
     }
-    .wizards {     
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      justify-items: center;
-    }
-    .wizard {
-      padding: 10px;
-      text-decoration: none;
-    }
-    .wizard:hover {
-      text-decoration: none;
-    }
-    .wizard .name {
-      text-align: center;
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: var(--fluo-green);
-    }
-    .wizard .project {
-      text-align: center;
-      font-size: 1rem;
-      color: var(--green);
-    }
-    .wizard img {
-      border-radius: 50%;
-      margin-top: 20%;
-      min-width: 150px;
-      max-width: 150px;
-      width: 50%;
-      height: auto;  
-      transition: all 0.5s ease-in-out 0s;
-    }
-    .wizard img:hover {
-      cursor: pointer;
-      transform: translate(5%, 10%);
-      box-shadow: var(--purple);
-      -moz-box-shadow: var(--purple);
-      -webkit-box-shadow: var(--purple);
-      -o-box-shadow: var(--purple);   
-      transition: all 0.3s ease-in-out 0s;
-    }
-    .local {
-      box-shadow: 7px 7px var(--pink);
-      -moz-box-shadow: 7px 7px var(--pink);
-      -webkit-box-shadow: 7px 7px var(--pink);
-      -o-box-shadow: 7px 7px var(--pink);  
-    }
-    .remote {
-      box-shadow: 7px 7px var(--fluo-green);
-      -moz-box-shadow: 7px 7px var(--fluo-green);
-      -webkit-box-shadow: 7px 7px var(--fluo-green);
-      -o-box-shadow: 7px 7px var(--fluo-green);    
-    }
 
     /* SPEAKER */
     .speaker_grid{
       display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      grid-template-columns: 12fr;
       gap: 30px;
 
       .speaker_card_container{
@@ -360,6 +280,8 @@ function get_theme () {
           border:2px solid var(--light-purple);
           transition:0.2s;
           text-align:center;
+          box-sizing: border-box;
+          padding:20px;
         }
 
         .profile_img{
@@ -374,6 +296,7 @@ function get_theme () {
           color: var(--fluo-green);
           font-size:1.2rem;
           font-weight:700;
+          line-height:30px;
           a{
             text-decoration:none;
             color:var(--flou-green);
@@ -386,6 +309,7 @@ function get_theme () {
         .talk{
           color:var(--green);
           font-size:1rem;
+          line-height:24px;
         }
 
         &:hover{
@@ -396,6 +320,24 @@ function get_theme () {
 
       }
 
+    }
+    @container (min-width: 810px) {
+      .speaker_grid{
+        grid-template-columns: 6fr 6fr;
+      }
+    }
+
+    .local {
+      box-shadow: 7px 7px var(--pink);
+      -moz-box-shadow: 7px 7px var(--pink);
+      -webkit-box-shadow: 7px 7px var(--pink);
+      -o-box-shadow: 7px 7px var(--pink);  
+    }
+    .remote {
+      box-shadow: 7px 7px var(--fluo-green);
+      -moz-box-shadow: 7px 7px var(--fluo-green);
+      -webkit-box-shadow: 7px 7px var(--fluo-green);
+      -o-box-shadow: 7px 7px var(--fluo-green);    
     }
 
 
