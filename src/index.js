@@ -13,32 +13,33 @@ function page (cb) {
   const register = document.createElement('button')
   register.innerText = 'Register'
   register.onclick = () => book()
-  
-  const speakers = document.createElement('div')
-  speakers.classList.add('box')
-  speakers.innerHTML = `<h2> Wizards </h2> </div>`
-  const container = document.createElement('div')
-  container.classList.add('speakers')
-  speakers.append(container)
+
+  // Speakers
+  let speakers_wrapper = document.createElement('div')
+  speakers_wrapper.classList.add('box')
+  speakers_wrapper.innerHTML = `
+    <h2>Speakers</h2>
+    <div class="speaker_grid"></div>
+  `
+
+
+
   list.forEach(item => {
-    const img = document.createElement('img')
-    img.setAttribute('src', `./assets/speakers/${item.name}`)
-    img.classList.add((item.from === 'remote') ? 'remote' : 'local' )
-    const name = document.createElement('div')
-    name.innerText = item.name
-    name.classList.add('name')
-    const project = document.createElement('div')
-    project.innerText = item.project
-    project.classList.add('project')
+    let speaker_grid = speakers_wrapper.querySelector('.speaker_grid')
+    let speaker_card_container = document.createElement('div')
+    speaker_card_container.classList.add('speaker_card_container')
+    speaker_card_container.innerHTML = `
+      <div class="speaker_card">
+        <img src="./assets/speakers/${item.name}" class="profile_img" ></img>
+          <div class="username">
+            <a href="${item.link}" target="_blank">${item.name}</a> - <a>${item.project}</a>
+          </div>
+        <div class="talk">Subject of talk. lorem ipsum ase de lorem ipsum ase de lorem ipsum </div>
+      </div>`
+    speaker_grid.append(speaker_card_container)
 
-    const speaker = document.createElement('a')
-    if (item.link) speaker.setAttribute('href', item.link)
-    speaker.setAttribute('target', '_blank')
-    speaker.classList.add('speaker')
-    speaker.append(img, name, project)
-
-    container.append(speaker)
   })
+
   
   shadow.innerHTML = `
     <link rel="preload" href'./assets/alvados3.png' as="image">
@@ -61,6 +62,7 @@ function page (cb) {
         <span>Wizard Amigos</span>
         <span> Code Camp</span>
       </h1>
+
       <div class='date'>October 2023, Portugal</div>
       <div class='box'>
       <p>Wizard Amigos code camp is a DIY gathering that will this year stretch over the whole October.</p>
@@ -82,8 +84,6 @@ function page (cb) {
       
       <speakers></speakers>
 
-     
-      
       <div class='venue box'>
         <h2>Location</h2>
         <p>
@@ -127,7 +127,7 @@ function page (cb) {
   `
 
   shadow.querySelector('img').onload = cb
-  shadow.querySelector('speakers').replaceWith(speakers)
+  shadow.querySelector('speakers').replaceWith(speakers_wrapper)
   shadow.querySelector('register').replaceWith(register)
   
   // shadow.adoptedStyleSheets = [sheet]
@@ -243,8 +243,9 @@ function get_theme () {
       grid-column-start: 2;
     }
     .box {
+      container-type: inline-size;
       grid-column-start: 2;
-      border: 16px solid var(--light-purple);
+      border: 6px solid var(--light-purple);
       transition: box-shadow .3s ease-in-out;
       padding: 3%;
       margin: 5% 5% 0 5%;
@@ -252,47 +253,76 @@ function get_theme () {
       font-size: 1.5rem;
       width: 90%;
     }
-    .speakers {     
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      justify-items: center;
+
+    /* SPEAKER */
+    .speaker_grid{
+      display:grid;
+      grid-template-columns: 12fr;
+      gap: 30px;
+
+      .speaker_card_container{
+        background-color:var(--light-purple);
+        height:100%;
+        width:100%;
+
+        .speaker_card{
+          height:100%;
+          width:100%;
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+          align-items:center;
+          background-color:black;
+          border:2px solid var(--light-purple);
+          transition:0.2s;
+          text-align:center;
+          box-sizing: border-box;
+          padding:40px;
+        }
+
+        .profile_img{
+          width:110px;
+          aspect-ratio:1/1;
+          border-radius:10rem;
+          background-color:red;
+          margin-bottom:25px;
+        }
+
+        .username{
+          color: var(--fluo-green);
+          font-size:1.2rem;
+          font-weight:700;
+          
+          a{
+            text-decoration:none;
+            color:var(--flou-green);
+            &:hover{
+              text-decoration:underline;
+            }
+          }
+        }
+        
+        .talk{
+          color:var(--green);
+          font-size:1rem;
+          line-height:28px;
+        }
+
+        &:hover{
+          .speaker_card{
+            transform: translate(-12px, -12px)
+          }
+        }
+
+      }
+
     }
-    .speaker {
-      padding: 10px;
-      text-decoration: none;
+    @container (min-width: 810px) {
+      .speaker_grid{
+        grid-template-columns: 6fr 6fr;
+      }
     }
-    .speaker:hover {
-      text-decoration: none;
-    }
-    .speaker .name {
-      text-align: center;
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: var(--fluo-green);
-    }
-    .speaker .project {
-      text-align: center;
-      font-size: 1rem;
-      color: var(--green);
-    }
-    .speaker img {
-      border-radius: 50%;
-      margin-top: 20%;
-      min-width: 150px;
-      max-width: 150px;
-      width: 50%;
-      height: auto;  
-      transition: all 0.5s ease-in-out 0s;
-    }
-    .speaker img:hover {
-      cursor: pointer;
-      transform: translate(5%, 10%);
-      box-shadow: var(--purple);
-      -moz-box-shadow: var(--purple);
-      -webkit-box-shadow: var(--purple);
-      -o-box-shadow: var(--purple);   
-      transition: all 0.3s ease-in-out 0s;
-    }
+
     .local {
       box-shadow: 7px 7px var(--pink);
       -moz-box-shadow: 7px 7px var(--pink);
@@ -305,6 +335,11 @@ function get_theme () {
       -webkit-box-shadow: 7px 7px var(--fluo-green);
       -o-box-shadow: 7px 7px var(--fluo-green);    
     }
+
+
+
+
+
     .booking {
     }
     .venue {
