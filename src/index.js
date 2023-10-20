@@ -29,14 +29,12 @@ function page (cb) {
     let speaker_card_container = document.createElement('div')
     speaker_card_container.classList.add('speaker_card_container')
     speaker_card_container.innerHTML = `
-      <div class="speaker_card_container">
-        <div class="speaker_card">
-          <img src="./assets/speakers/${item.name}" class="profile_img ${(item.from === 'remote') ? 'remote' : 'local' }" ></img>
-            <div class="username">
-              <a href="${item.link}" target="_blank">${item.name}</a> - <a>${item.project}</a>
-            </div>
-          <div class="talk">Subject of talk. lorem ipsum ase de lorem ipsum ase de lorem ipsum </div>
-        </div>
+      <div class="speaker_card">
+        <img src="./assets/speakers/${item.name}" class="profile_img" ></img>
+          <div class="username">
+            <a href="${item.link}" target="_blank">${item.name}</a> - <a>${item.project}</a>
+          </div>
+        <div class="talk">Subject of talk. lorem ipsum ase de lorem ipsum ase de lorem ipsum </div>
       </div>`
     speaker_grid.append(speaker_card_container)
 
@@ -264,9 +262,8 @@ function get_theme () {
 
       .speaker_card_container{
         background-color:var(--light-purple);
-        aspect-ratio:16/9;
-        position:relative;
-
+        height:100%;
+        width:100%;
 
         .speaker_card{
           height:100%;
@@ -275,28 +272,27 @@ function get_theme () {
           flex-direction:column;
           justify-content:center;
           align-items:center;
-          position:absolute;
           background-color:black;
           border:2px solid var(--light-purple);
           transition:0.2s;
           text-align:center;
           box-sizing: border-box;
-          padding:20px;
+          padding:40px;
         }
 
         .profile_img{
-          width:80px;
+          width:110px;
           aspect-ratio:1/1;
           border-radius:10rem;
           background-color:red;
-          margin-bottom:20px;
+          margin-bottom:25px;
         }
 
         .username{
           color: var(--fluo-green);
           font-size:1.2rem;
           font-weight:700;
-          line-height:30px;
+          
           a{
             text-decoration:none;
             color:var(--flou-green);
@@ -309,7 +305,7 @@ function get_theme () {
         .talk{
           color:var(--green);
           font-size:1rem;
-          line-height:24px;
+          line-height:28px;
         }
 
         &:hover{
