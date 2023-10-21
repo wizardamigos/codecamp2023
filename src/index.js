@@ -34,7 +34,7 @@ function page (cb) {
           <div class="username">
             <a href="${item.link}" target="_blank">${item.name}</a> - <a>${item.project}</a>
           </div>
-        <div class="talk">Subject of talk. lorem ipsum ase de lorem ipsum ase de lorem ipsum </div>
+        <div class="talk"> ${item.talk}</div>
       </div>`
     speaker_grid.append(speaker_card_container)
 

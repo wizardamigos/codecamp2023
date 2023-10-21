@@ -49,32 +49,33 @@ function page (cb) {
   const register = document.createElement('button')
   register.innerText = 'Register'
   register.onclick = () => book()
-  
-  const speakers = document.createElement('div')
-  speakers.classList.add('box')
-  speakers.innerHTML = `<h2> Wizards </h2> </div>`
-  const container = document.createElement('div')
-  container.classList.add('speakers')
-  speakers.append(container)
+
+  // Speakers
+  let speakers_wrapper = document.createElement('div')
+  speakers_wrapper.classList.add('box')
+  speakers_wrapper.innerHTML = `
+    <h2>Speakers</h2>
+    <div class="speaker_grid"></div>
+  `
+
+
+
   list.forEach(item => {
-    const img = document.createElement('img')
-    img.setAttribute('src', `./assets/speakers/${item.name}`)
-    img.classList.add((item.from === 'remote') ? 'remote' : 'local' )
-    const name = document.createElement('div')
-    name.innerText = item.name
-    name.classList.add('name')
-    const project = document.createElement('div')
-    project.innerText = item.project
-    project.classList.add('project')
+    let speaker_grid = speakers_wrapper.querySelector('.speaker_grid')
+    let speaker_card_container = document.createElement('div')
+    speaker_card_container.classList.add('speaker_card_container')
+    speaker_card_container.innerHTML = `
+      <div class="speaker_card">
+        <img src="./assets/speakers/${item.name}" class="profile_img" ></img>
+          <div class="username">
+            <a href="${item.link}" target="_blank">${item.name}</a> - <a>${item.project}</a>
+          </div>
+        <div class="talk"> ${item.talk}</div>
+      </div>`
+    speaker_grid.append(speaker_card_container)
 
-    const speaker = document.createElement('a')
-    if (item.link) speaker.setAttribute('href', item.link)
-    speaker.setAttribute('target', '_blank')
-    speaker.classList.add('speaker')
-    speaker.append(img, name, project)
-
-    container.append(speaker)
   })
+
   
   shadow.innerHTML = `
     <link rel="preload" href'./assets/alvados3.png' as="image">
@@ -97,6 +98,7 @@ function page (cb) {
         <span>Wizard Amigos</span>
         <span> Code Camp</span>
       </h1>
+
       <div class='date'>October 2023, Portugal</div>
       <div class='box'>
       <p>Wizard Amigos code camp is a DIY gathering that will this year stretch over the whole October.</p>
@@ -118,8 +120,6 @@ function page (cb) {
       
       <speakers></speakers>
 
-     
-      
       <div class='venue box'>
         <h2>Location</h2>
         <p>
@@ -163,7 +163,7 @@ function page (cb) {
   `
 
   shadow.querySelector('img').onload = cb
-  shadow.querySelector('speakers').replaceWith(speakers)
+  shadow.querySelector('speakers').replaceWith(speakers_wrapper)
   shadow.querySelector('register').replaceWith(register)
   
   // shadow.adoptedStyleSheets = [sheet]
@@ -279,8 +279,9 @@ function get_theme () {
       grid-column-start: 2;
     }
     .box {
+      container-type: inline-size;
       grid-column-start: 2;
-      border: 16px solid var(--light-purple);
+      border: 6px solid var(--light-purple);
       transition: box-shadow .3s ease-in-out;
       padding: 3%;
       margin: 5% 5% 0 5%;
@@ -288,47 +289,77 @@ function get_theme () {
       font-size: 1.5rem;
       width: 90%;
     }
-    .speakers {     
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      justify-items: center;
+
+    /* SPEAKER */
+    .speaker_grid{
+      display:grid;
+      grid-template-columns: 12fr;
+      gap: 30px;
+
+      .speaker_card_container{
+        background-color:var(--light-purple);
+        height:100%;
+        width:100%;
+
+        .speaker_card{
+          height:100%;
+          width:100%;
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+          align-items:center;
+          background-color:black;
+          border:2px solid var(--light-purple);
+          transition:0.2s;
+          text-align:center;
+          box-sizing: border-box;
+          padding:40px;
+        }
+
+        .profile_img{
+          width:110px;
+          aspect-ratio:1/1;
+          border-radius:10rem;
+          background-color:red;
+          margin-bottom:25px;
+        }
+
+        .username{
+          color: var(--fluo-green);
+          font-size:1.2rem;
+          font-weight:700;
+          
+          a{
+            text-decoration:none;
+            color:var(--flou-green);
+            &:hover{
+              text-decoration:underline;
+            }
+          }
+        }
+        
+        .talk{
+          color:var(--green);
+          font-size:1rem;
+          margin-top:10px;
+          line-height:28px;
+        }
+
+        &:hover{
+          .speaker_card{
+            transform: translate(-12px, -12px)
+          }
+        }
+
+      }
+
     }
-    .speaker {
-      padding: 10px;
-      text-decoration: none;
+    @container (min-width: 810px) {
+      .speaker_grid{
+        grid-template-columns: 6fr 6fr;
+      }
     }
-    .speaker:hover {
-      text-decoration: none;
-    }
-    .speaker .name {
-      text-align: center;
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: var(--fluo-green);
-    }
-    .speaker .project {
-      text-align: center;
-      font-size: 1rem;
-      color: var(--green);
-    }
-    .speaker img {
-      border-radius: 50%;
-      margin-top: 20%;
-      min-width: 150px;
-      max-width: 150px;
-      width: 50%;
-      height: auto;  
-      transition: all 0.5s ease-in-out 0s;
-    }
-    .speaker img:hover {
-      cursor: pointer;
-      transform: translate(5%, 10%);
-      box-shadow: var(--purple);
-      -moz-box-shadow: var(--purple);
-      -webkit-box-shadow: var(--purple);
-      -o-box-shadow: var(--purple);   
-      transition: all 0.3s ease-in-out 0s;
-    }
+
     .local {
       box-shadow: 7px 7px var(--pink);
       -moz-box-shadow: 7px 7px var(--pink);
@@ -341,6 +372,11 @@ function get_theme () {
       -webkit-box-shadow: 7px 7px var(--fluo-green);
       -o-box-shadow: 7px 7px var(--fluo-green);    
     }
+
+
+
+
+
     .booking {
     }
     .venue {
@@ -469,26 +505,33 @@ module.exports = get_speakers
 function get_speakers () {
   const list = [
     // { name: 'mafintosh', project: 'Hypercore & Holepunch', from: 'remote', link: 'https://twitter.com/mafintosh' },
-    { name: 'nora', project: 'Patronage', from: 'local', link: 'https://twitter.com/noraliucode' },
-    { name: 'jam10o', project: 'Shokunin', from: 'local', link: 'https://twitter.com/jam10o'},
-    { name: 'rtn', project: 'Linkping', from: 'remote', link: ' https://github.com/ralphtheninja'},
-    { name: 'derhuerst', project: 'Open Transport', from: 'local' , link: 'https://twitter.com/derhuerst'},
-    { name: 'adelayde', project: 'Hacktion Lab', from: 'local' , link: 'https://twitter.com/MBrinsleyHarris'},
-    { name: 'gus', project: 'Templo', from: 'local', link: 'https://medium.com/@gustavo_64625'},
-    { name: 'ninjabirdy', project: 'DatDot & WizardAmigos', from: 'local', link: 'https://twitter.com/ninabreznik'},
+    { name: 'adelayde', project: 'Hacktion Lab', from: 'local' , link: 'https://twitter.com/MBrinsleyHarris', talk: 'How Science Publishing works today and how it could look like in the future'},
+    { name: 'bjoern', project: 'Delta Chat', from: 'remote', link: 'https://github.com/r10s', talk: 'Deltachat/Webxdc Secure Sandbox'},
+    { name: 'cryptix', project: 'Sleepy bike', from: 'remote', link: 'github.com/cryptix/', talk: 'Cable Protocol (cabal.chat)'},
+    { name: 'derhuerst', project: 'Open Transportation', from: 'local' , link: 'https://twitter.com/derhuerst', talk: 'Open-sourcing Transportation data'},
+    { name: 'gus', project: 'Templo', from: 'local', link: 'https://medium.com/@gustavo_64625', talk: 'Open House - Social Experiment for Innovation'},
+    { name: 'hdegroote', project: 'HyperPubee', from: 'local', link: 'https://gitlab.com/HDegroote', talk: 'Decentralised publishing (dcent reads, dcent beats)'},
+    { name: 'jam10o', project: 'Shokunin', from: 'local', link: 'https://twitter.com/jam10o', talk: 'A weird esolang I accidentally created on the way to building a portable AI sideproject'},
+    { name: 'kristallpirat', project: 'C-base', from: 'remote', link: '', talk: 'Building a natural language processing as a c-base community member'},
+    { name: 'lukks', project: 'Holepunch', from: 'remote', link: 'https://github.com/lukks', talk: 'Holepunch, Hypercore, Hyper DHT'},
+    { name: 'mariha', project: 'Sleepy bike', from: 'remote', link: 'https://liberapay.com/mariha', talk: 'Solid + sleepy.bike'},
+    { name: 'michal', project: 'Sleepy bike', from: 'remote', link: 'https://github.com/mrkvon', talk: 'Solid + sleepy.bike'},
+    { name: 'miguel', project: 'Kinera', from: 'local', link: 'https://www.linkedin.com/in/miguel-marques-4322101a8/', talk: 'Prediction markets in Movie Industry'},
+    { name: 'naugtur', project: 'Endo & MetaMask', from: 'remote', link: 'https://twitter.com/naugtur', talk: 'Safely running obfuscated Malware from npm'},
+    { name: 'ninjabirdy', project: 'DatDot & WizardAmigos', from: 'local', link: 'https://twitter.com/ninabreznik', talk: 'Organizing WizardAmigos code camps behind the scenes'},
+    { name: 'nora', project: 'Patronage', from: 'local', link: 'https://twitter.com/noraliucode', talk: 'Funding Open Source Projects with Crypto Patronage' },
+    { name: 'olemehll', project: 'Grillchat', from: 'remote', link: '', talk: 'Subsocial:  Grill chat' },
+    { name: 'serapath', project: 'DatDot & WizardAmigos', from: 'local', link: 'https://twitter.com/serapath', talk: 'Decoupling data from the app service with DatDot'},
+    { name: 'telamohn', project: 'Pico Stack', from: 'remote', link: 'https://twitter.com/telamohn', talk: 'It is called: The Subtle Art of  Xorcery'},
+    { name: 'tinchoz', project: 'Sher', from: 'remote', link: 'https://twitter.com/tinchoz49', talk: 'Audio streaming with Sher'},
+    // { name: 'rtn', project: 'Linkping', from: 'remote', link: ' https://github.com/ralphtheninja'},
     // { name: 'fredrik', project: 'digital philosopher', from: 'local' , link: ''},
-    { name: 'miguel', project: 'Codice Lda', from: 'local', link: 'https://www.linkedin.com/in/miguel-marques-4322101a8/'},
     // { name: 'kumavis_', project: 'LavaMoat & MetaMask', from: 'remote', link: 'https://twitter.com/kumavis_'},
     // { name: 'heapwolf', project: 'Socket Supply', from: 'remote', link: 'https://twitter.com/heapwolf'},
-    // { name: 'carax', project: 'Sher & Geut', from: 'remote', link: 'https://twitter.com/carax'},
     // { name: 'zobroj', project: 'Art & Design', from: 'local', link: 'https://twitter.com/zobroj'},
     // { name: 'RangerMauve', project: 'Agregore', from: 'remote', link: 'https://twitter.com/RangerMauve'},
     // { name: 'Aglae Bindi', project: 'Astralship & TyddynTeg', from: 'local', link: 'https://twitter.com/AstralMarlene'},
-    { name: 'serapath', project: 'DatDot & WizardAmigos', from: 'local', link: 'https://twitter.com/serapath'},
     // { name: 'liamkurmos', project: 'Astralship', from: 'local', link: 'https://twitter.com/liamkurmos'},
-    // { name: 'naugtur', project: 'Endo & MetaMask', from: 'remote', link: 'https://twitter.com/naugtur'},
-    { name: 'mariha', project: 'Sleepy bikes', from: 'remote', link: 'https://liberapay.com/mariha'},
-    { name: 'telamohn', project: 'Pico Stack', from: 'remote', link: 'https://twitter.com/telamohn'},
     // { name: 'hugozap', project: 'Rust in JS', from: 'remote', link: 'https://twitter.com/hugozap'},
     // { name: 'xylodrone', project: 'Ordum', from: 'local', link: 'https://twitter.com/xylodrone'},
     // { name: 'jeffemmett', project: 'Commons stack', from: 'remote', link: 'https://twitter.com/jeffemmett'},
@@ -498,7 +541,6 @@ function get_speakers () {
     // { name: 'julianne becker', project: 'Coconat', from: 'remote', link: 'https://www.facebook.com/juliannebecker'},
     // { name: 'whimful', project: 'Ahau', from: 'remote', link: 'https://twitter.com/whimful'},
     // { name: 'shaneo_donnell', project: 'Value Flows', from: 'remote', link: 'https://twitter.com/shaneo_donnell'},
-    { name: 'hdegroote', project: 'HyperPubee', from: 'local', link: 'https://gitlab.com/HDegroote'},
     // { name: 'Stephen Reid', project: 'Worker Cooperatives and DAOs', from: 'remote', link: 'https://twitter.com/lunarpunk_0x'},
     // { name: 'Daniel Bar', project: 'Pink Valley Farm', from: 'remote', link: 'https://twitter.com/danieltbar'},
     // { name: 'Aral Balkan', project: 'Small World Tech & Kitten', from: 'remote' },
