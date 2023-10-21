@@ -305,6 +305,7 @@ function get_theme () {
         .talk{
           color:var(--green);
           font-size:1rem;
+          margin-top:10px;
           line-height:28px;
         }
 
