@@ -18,7 +18,7 @@ function page (cb) {
   let speakers_wrapper = document.createElement('div')
   speakers_wrapper.classList.add('box')
   speakers_wrapper.innerHTML = `
-    <h2>Speakers</h2>
+    <h2>Wizards</h2>
     <div class="speaker_grid"></div>
   `
 
