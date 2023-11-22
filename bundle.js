@@ -42,13 +42,9 @@ function page (cb) {
   const el = document.createElement('div')
   const shadow = el.attachShadow({ mode: 'closed' })
   
-  const booking_button = document.createElement('button')
-  booking_button.innerText = 'Tickets / Booking'
-  booking_button.onclick = () => book()
-  
-  const register = document.createElement('button')
-  register.innerText = 'Register'
-  register.onclick = () => book()
+  const mastodon = document.createElement('button')
+  mastodon.innerText = 'Follow us'
+  mastodon.onclick = () => follow()
 
   // Speakers
   let speakers_wrapper = document.createElement('div')
@@ -70,7 +66,9 @@ function page (cb) {
           <div class="username">
             <a href="${item.link}" target="_blank">${item.name}</a> - <a>${item.project}</a>
           </div>
-        <div class="talk"> ${item.talk}</div>
+        <div class="talk"> 
+          <a href="${item.peertube}" target="_blank">${item.talk}</a>
+        </div>
       </div>`
     speaker_grid.append(speaker_card_container)
 
@@ -78,19 +76,19 @@ function page (cb) {
 
   
   shadow.innerHTML = `
-    <link rel="preload" href'./assets/alvados3.png' as="image">
-    <link rel="preload" href'./assets/alvados9.png' as="image">
-    <link rel="preload" href'./assets/alvados1.png' as="image">
-    <link rel="preload" href'./assets/alvados8.png' as="image">
-    <link rel="preload" href'./assets/alvados10.png' as="image">
-    <link rel="preload" href'./assets/alvados7.png' as="image">
-    <link rel="preload" href'./assets/alvados5.png' as="image">
-    <link rel="preload" href'./assets/alvados2.png' as="image">
-    <link rel="preload" href'./assets/alvados4.png' as="image">
-    <link rel="preload" href'./assets/alvados6.png' as="image">
-    <link rel="preload" href'./assets/alvados11.png' as="image">
-    <link rel="preload" href'./assets/alvados12.png' as="image">
-    <link rel="preload" href'./assets/alvados3.png' as="image">
+    <link rel="preload" href'./assets/camp3.jpg' as="image">
+    <link rel="preload" href'./assets/camp9.jpg' as="image">
+    <link rel="preload" href'./assets/camp1.jpg' as="image">
+    <link rel="preload" href'./assets/camp8.jpg' as="image">
+    <link rel="preload" href'./assets/camp10.jpg' as="image">
+    <link rel="preload" href'./assets/camp7.jpg' as="image">
+    <link rel="preload" href'./assets/camp5.jpg' as="image">
+    <link rel="preload" href'./assets/camp2.jpg' as="image">
+    <link rel="preload" href'./assets/camp4.jpg' as="image">
+    <link rel="preload" href'./assets/camp6.jpg' as="image">
+    <link rel="preload" href'./assets/camp11.jpg' as="image">
+    <link rel="preload" href'./assets/camp12.jpg' as="image">
+    <link rel="preload" href'./assets/camp13.jpg' as="image">
     
     <div class='main'>
       <img class='logo' src='./assets/Wizard-Amigos---Stickers---CAT-NOMAD---TRANSPARENT---2022.png'></img>
@@ -101,19 +99,19 @@ function page (cb) {
 
       <div class='date'>October 2023, Portugal</div>
       <div class='box'>
-      <p>Wizard Amigos code camp is a DIY gathering that will this year stretch over the whole October.</p>
+      <p>Wizard Amigos code camp is a DIY gathering and has this year stretched over the whole October.</p>
         <p>
           A full month of co-living, co-working and organizing an unconference (with remote guests) sharing knowledge about 
           P2P / federated / co-governed tech, care for people & the future, sustainability and exploring pathways toward a real systemic change.
         </p>
-        <p>Are you thinking of joining? The camp starts very soon and there is still a few spots available :)</p>
-        <register></register>
+        <p>Are you thinking of joining? We are already planning the next cam, so stay tuned :)</p>
+        <mastodon></mastodon>
       </div>
 
       <div class='box'>
         <h2> Talks, Workshops & Discussions </h2>
         <p></p>
-        <p> Talks from the code camp will be recorded (some will be live-streamed) and available on our <a target='_blank' href='https://peertube.1312.media/a/wizardamigos/video-channels'> PeerTube</a> and <a target='_blank' href='https://www.youtube.com/@wizardamigos4213'> Youtube</a> channels. </p>
+        <p> Talks from the code camp are recorded and available on our <a target='_blank' href='https://peertube.1312.media/a/wizardamigos/video-channels'> PeerTube</a> and <a target='_blank' href='https://www.youtube.com/@wizardamigos4213'> Youtube</a> channels. </p>
         <p>To support Wizard Amigos, You can drop a coin in the tip jar through our <a target='_blank' href='https://opencollective.com/wizardamigos'> Open Collective page. </a></p>
       
         </div>
@@ -123,26 +121,26 @@ function page (cb) {
       <div class='venue box'>
         <h2>Location</h2>
         <p>
-        Wizard Amigos code camp 2023 is set in a villa on a valley with a breathtaking view of the mountains around it. It is located in a quiet village in Portugal called Alvados, where you can experience the old days' rural life.
+        Wizard Amigos code camp 2023 was set in a villa on a valley with a breathtaking view of the mountains around it. Located in a quiet village in Portugal called Alvados we experienced a perfect mash between tech and the old days' rural life.
         Surrounded by nature 360º you will feel like you've been immersed into relaxing mode. 
 
-        We plan to work, learn from each other and relax inside the house or outside beneath the shade of an olive tree, by the pool or on the terrace facing the mountains, or even hiking/biking around the kms and kms of indigenous nature trails that surround the wizard villa.
+        We plan were coworking, learning from each other and relaxing inside the house or outside beneath the shade of an olive tree or on a hike in amazingly indigenous nature trails that surrounded the wizard villa.
         </p>      
 
         <div class='gallery'>
-          <img src='./assets/alvados1.png'></img>
-          <img src='./assets/alvados11.png'></img>
-          <img src='./assets/alvados4.png'></img>
-          <img src='./assets/alvados2.png'></img>
-          <img src='./assets/alvados13.png'></img>
-          <img src='./assets/alvados8.png'></img>
-          <img src='./assets/alvados6.png'></img>
-          <img src='./assets/alvados9.png'></img>
-          <img src='./assets/alvados7.png'></img>
-          <img src='./assets/alvados5.png'></img>
-          <img src='./assets/alvados10.png'></img>
-          <img src='./assets/alvados3.png'></img>
-          <img src='./assets/alvados12.png'></img>
+          <img src='./assets/camp1.jpg'></img>
+          <img src='./assets/camp10.jpg'></img>
+          <img src='./assets/camp12.jpg'></img>
+          <img src='./assets/camp2.jpg'></img>
+          <img src='./assets/camp17.jpg'></img>
+          <img src='./assets/camp8.jpg'></img>
+          <img src='./assets/camp6.jpg'></img>
+          <img src='./assets/camp9.jpg'></img>
+          <img src='./assets/camp7.jpg'></img>
+          <img src='./assets/camp16.jpg'></img>
+          <img src='./assets/camp11.jpg'></img>
+          <img src='./assets/camp19.jpg'></img>
+          <img src='./assets/camp4.jpg'></img>
         </div>     
       </div>
       
@@ -150,7 +148,7 @@ function page (cb) {
         <h2>About</h2>
         <h3>Who is organizing this?</h3>
         <p>
-          This event is being organised by enthusiasts, for enthusiasts. 
+          Wizard Amigos code camps are being organised by enthusiasts, for enthusiasts. 
           We are a group doing this together, and we want to learn how to do things together. If you want to <a href='https://discord.gg/8FzZPHkp44' target="_blank">tag along</a>, you are in the group. We are we.
         </p>
         <h3>Is event sponsored?</h3>
@@ -164,7 +162,7 @@ function page (cb) {
 
   shadow.querySelector('img').onload = cb
   shadow.querySelector('speakers').replaceWith(speakers_wrapper)
-  shadow.querySelector('register').replaceWith(register)
+  shadow.querySelector('mastodon').replaceWith(mastodon)
   
   // shadow.adoptedStyleSheets = [sheet]
   const style = document.createElement('style')
@@ -174,8 +172,8 @@ function page (cb) {
 
   // handlers
 
-  function book () {
-    window.open('https://forms.zohopublic.com/virtualoffice22084/form/WizardAmigosCodeCamp1/formperma/D8aoqyrH9shhhLqNxLFWLczATUOBKHfmvTLJVvIOUs8')
+  function follow () {
+    window.open('https://fosstodon.org/@wizardamigos')
   }
 
   function open_map () {
@@ -505,26 +503,25 @@ module.exports = get_speakers
 function get_speakers () {
   const list = [
     // { name: 'mafintosh', project: 'Hypercore & Holepunch', from: 'remote', link: 'https://twitter.com/mafintosh' },
-    { name: 'adelayde', project: 'Hacktion Lab', from: 'local' , link: 'https://twitter.com/MBrinsleyHarris', talk: 'How Science Publishing works today and how it could look like in the future'},
-    { name: 'bjoern', project: 'Delta Chat', from: 'remote', link: 'https://github.com/r10s', talk: 'Deltachat/Webxdc Secure Sandbox'},
-    { name: 'cryptix', project: 'Sleepy bike', from: 'remote', link: 'github.com/cryptix/', talk: 'Cable Protocol (cabal.chat)'},
-    { name: 'derhuerst', project: 'Open Transportation', from: 'local' , link: 'https://twitter.com/derhuerst', talk: 'Open-sourcing Transportation data'},
-    { name: 'gus', project: 'Templo', from: 'local', link: 'https://medium.com/@gustavo_64625', talk: 'Open House - Social Experiment for Innovation'},
-    { name: 'hdegroote', project: 'HyperPubee', from: 'local', link: 'https://gitlab.com/HDegroote', talk: 'Decentralised publishing (dcent reads, dcent beats)'},
-    { name: 'jam10o', project: 'Shokunin', from: 'local', link: 'https://twitter.com/jam10o', talk: 'A weird esolang I accidentally created on the way to building a portable AI sideproject'},
-    { name: 'kristallpirat', project: 'c-base', from: 'remote', link: '', talk: 'Building a natural language processing as a c-base community member'},
-    { name: 'lukks', project: 'Holepunch', from: 'remote', link: 'https://github.com/lukks', talk: 'Holepunch, Hypercore, Hyper DHT'},
-    { name: 'mariha', project: 'Sleepy bike', from: 'remote', link: 'https://liberapay.com/mariha', talk: 'Solid + sleepy.bike'},
-    { name: 'michal', project: 'Sleepy bike', from: 'remote', link: 'https://github.com/mrkvon', talk: 'Solid + sleepy.bike'},
-    { name: 'miguel', project: 'Kinera', from: 'local', link: 'https://www.linkedin.com/in/miguel-marques-4322101a8/', talk: 'Prediction markets in Movie Industry'},
-    { name: 'naugtur', project: 'Endo & MetaMask', from: 'remote', link: 'https://twitter.com/naugtur', talk: 'Safely running obfuscated Malware from npm'},
-    { name: 'ninjabirdy', project: 'DatDot & WizardAmigos', from: 'local', link: 'https://twitter.com/ninabreznik', talk: 'Organizing WizardAmigos code camps behind the scenes'},
-    { name: 'nora', project: 'Patronage', from: 'local', link: 'https://twitter.com/noraliucode', talk: 'Funding Open Source Projects with Crypto Patronage' },
-    { name: 'olemehll', project: 'Grillchat', from: 'remote', link: 'https://github.com/olehmell/', talk: 'Subsocial:  Grill chat' },
-    { name: 'serapath', project: 'DatDot & WizardAmigos', from: 'local', link: 'https://twitter.com/serapath', talk: 'Decoupling data from the app service with DatDot'},
-    { name: 'telamohn', project: 'Pico Stack', from: 'remote', link: 'https://twitter.com/telamohn', talk: 'It is called: The Subtle Art of  Xorcery'},
-    { name: 'tinchoz', project: 'Sher', from: 'remote', link: 'https://twitter.com/tinchoz49', talk: 'Audio streaming with Sher'},
-    { name: 'viktor', project: 'Darksoil', from: 'remote', link: 'https://github.com/zaunders', talk: 'Group organizing with Darksoil and Holochain'},
+    { name: 'cryptix', project: 'Sleepy bike', from: 'remote', link: 'github.com/cryptix/', talk: 'Cable Protocol (cabal.chat)', peertube: 'https://peertube.1312.media/w/2sBmXUMoiCpZbatWZTwcvo'},
+    { name: 'serapath', project: 'DatDot & WizardAmigos', from: 'local', link: 'https://twitter.com/serapath', talk: 'A Deep Dive into DatDot', peertube: 'https://peertube.1312.media/w/m7iTbVpBiHoa7LhAFR93i8'},
+    { name: 'bjoern', project: 'Delta Chat', from: 'remote', link: 'https://github.com/r10s', talk: 'Deltachat/Webxdc Secure Sandbox', peertube: 'https://peertube.1312.media/w/dXsfZnndDgyiqkD16NFETr'},
+    { name: 'micahscopes', project: 'Wondering Xyz', from: 'remote', link: 'https://twitter.com/micahscopes', talk: 'Visualizing Dat ecosystem with Webscape Wanderer', peertube: 'https://peertube.1312.media/w/8eYaLNtQaF5xFX9NnPCjM3'},
+    { name: 'mariha', project: 'Sleepy bike', from: 'remote', link: 'https://liberapay.com/mariha', talk: 'Solid + sleepy.bike', peertube: 'https://peertube.1312.media/w/hRHVQQ73XEeNZP3bznNRfG'},
+    { name: 'hdegroote', project: 'HyperPubee', from: 'local', link: 'https://gitlab.com/HDegroote', talk: 'Decentralised publishing (dcent reads, dcent beats)', peertube: 'https://peertube.1312.media/w/bWQTNso62uYkL9UCZAtuRy'},
+    { name: 'tinchoz', project: 'Sher', from: 'remote', link: 'https://twitter.com/tinchoz49', talk: 'Audio streaming with Sher', peertube: 'https://peertube.1312.media/w/oyZi7MCAuSqgkqN22Koedt'},
+    { name: 'ninjabirdy', project: 'DatDot & WizardAmigos', from: 'local', link: 'https://twitter.com/ninabreznik', talk: 'Organizing WizardAmigos code camps behind the scenes', peertube: 'https://peertube.1312.media/w/bnAyuquUjwCd8pGGpwa1q1'},
+    { name: 'gus', project: 'Templo', from: 'local', link: 'https://medium.com/@gustavo_64625', talk: 'Open House - Social Experiment for Innovation', peertube: 'https://peertube.1312.media/w/gACwdETGHqHPvsMDcxLPgX'},
+    { name: 'jam10o', project: 'Shokunin', from: 'local', link: 'https://twitter.com/jam10o', talk: 'A weird esolang I accidentally created on the way to building a portable AI sideproject', peertube: 'https://peertube.1312.media/w/vBPRTa65sNH6GkAZr5DUkr'},
+    { name: 'nora', project: 'Patronage', from: 'local', link: 'https://twitter.com/noraliucode', talk: 'Funding Open Source Projects with Crypto Patronage' , peertube: 'https://peertube.1312.media/w/5t9jGpjEvC4k3Ggc7NpCHw'},
+    { name: 'derhuerst', project: 'Open Transportation', from: 'local' , link: 'https://twitter.com/derhuerst', talk: 'NAT and networking workshop', peertube: 'https://peertube.1312.media/w/veXvZbNCpk8FsxYjKi1r5A'},
+    { name: 'viktor', project: 'Darksoil', from: 'remote', link: 'https://github.com/zaunders', talk: 'Group organizing with Darksoil and Holochain', peertube: 'https://peertube.1312.media/w/d5SpyWphyC5JepaWV3mEAh'},
+    { name: 'olemehll', project: 'Grillchat', from: 'remote', link: 'https://github.com/olehmell/', talk: 'Subsocial:  Grill chat' , peertube: 'https://peertube.1312.media/w/rhypeBrAAy4gvPULaBeXZs'},
+    { name: 'michal', project: 'Sleepy bike', from: 'remote', link: 'https://github.com/mrkvon', talk: 'Solid + sleepy.bike', peertube: 'https://peertube.1312.media/w/hRHVQQ73XEeNZP3bznNRfG'},
+    { name: 'miguel', project: 'Kinera', from: 'local', link: 'https://www.linkedin.com/in/miguel-marques-4322101a8/', talk: 'Prediction markets in Movie Industry', peertube: ''},
+    { name: 'naugtur', project: 'Endo & MetaMask', from: 'remote', link: 'https://twitter.com/naugtur', talk: 'Safely running obfuscated Malware from npm', peertube: ''},
+    { name: 'telamohn', project: 'Pico Stack', from: 'remote', link: 'https://twitter.com/telamohn', talk: 'It is called: The Subtle Art of  Xorcery', peertube: 'https://peertube.1312.media/w/9ctufucuzhCn6nURkuaoSk'},
+    { name: 'adelayde', project: 'Hacktion Lab', from: 'local' , link: 'https://twitter.com/MBrinsleyHarris', talk: 'How Science Publishing works today and how it could look like in the future', peertube: ''},
     // { name: 'rtn', project: 'Linkping', from: 'remote', link: ' https://github.com/ralphtheninja'},
     // { name: 'fredrik', project: 'digital philosopher', from: 'local' , link: ''},
     // { name: 'kumavis_', project: 'LavaMoat & MetaMask', from: 'remote', link: 'https://twitter.com/kumavis_'},
@@ -538,7 +535,6 @@ function get_speakers () {
     // { name: 'jeffemmett', project: 'Commons stack', from: 'remote', link: 'https://twitter.com/jeffemmett'},
     // { name: 'MikolaLysenko', project: '0fps & Socket Security', from: 'remote', link: 'https://twitter.com/MikolaLysenko'},
     // { name: 'nicksellen', project: 'Karrot', from: 'local', link: 'https://nicksellen.co.uk/'},
-    // { name: 'micahscopes', project: 'Wondering Xyz', from: 'remote', link: 'https://twitter.com/micahscopes'},
     // { name: 'julianne becker', project: 'Coconat', from: 'remote', link: 'https://www.facebook.com/juliannebecker'},
     // { name: 'whimful', project: 'Ahau', from: 'remote', link: 'https://twitter.com/whimful'},
     // { name: 'shaneo_donnell', project: 'Value Flows', from: 'remote', link: 'https://twitter.com/shaneo_donnell'},
